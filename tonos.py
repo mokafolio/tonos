@@ -1,5 +1,6 @@
 import subprocess
 import fileinput
+import sys
 
 #config
 hostname = "tonos"
@@ -31,4 +32,4 @@ if hostname:
             if "127.0.1.1" in line:
                 print("127.0.1.1       " + hostname)
             else:
-                print(line)
+                sys.stdout.write(line)
