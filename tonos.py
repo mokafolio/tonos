@@ -40,7 +40,7 @@ subprocess.call("sudo apt install mopidy-youtube", shell=True)
 append_to_file("/etc/mopidy/mopidy.conf", "\n[mpd]\nhostname = ::\n\n[http]\nhostname = ::\n")
 
 #enable soundcloud
-if soundcloud_key:
+if soundcloud_key != None:
     append_to_file("/etc/mopidy/mopidy.conf", "\n[soundcloud]\auth_token = " + soundcloud_key + "\n")
 
 #make mopidy run as a service
