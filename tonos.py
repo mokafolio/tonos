@@ -7,7 +7,7 @@ hostname = "tonos"
 soundcloud_key = None
 
 #install pip
-# subprocess.call("sudo apt install python3-pip", shell=True)
+subprocess.call("sudo apt install python3-pip", shell=True)
 
 #install mopidy
 #https://docs.mopidy.com/en/latest/installation/debian/
