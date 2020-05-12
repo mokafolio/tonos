@@ -3,8 +3,17 @@ import fileinput
 import sys
 
 #config
-hostname = "tonos"
+hostname = "tonos" #if you don't want to change this, set it to None
 soundcloud_key = None
+
+#helper functions
+def replace_line(_file, _start, _change):
+    with fileinput.input(files=(_file), inplace=True) as f:
+        for line in f:
+            if _start in line:
+                print(_start + _change)
+            else:
+                sys.stdout.write(line)
 
 #install pip
 subprocess.call("sudo apt install python3-pip", shell=True)
@@ -16,7 +25,7 @@ subprocess.call("sudo wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt
 subprocess.call("sudo apt update", shell=True)
 subprocess.call("sudo apt install mopidy", shell=True)
 
-# #install extensions
+#install extensions
 subprocess.call("sudo apt install mopidy-mpd", shell=True)
 subprocess.call("sudo apt install mopidy-soundcloud", shell=True)
 
@@ -27,9 +36,4 @@ if hostname:
     with open("/etc/hostname", "w") as f:
         f.write(hostname)
 
-    with fileinput.input(files=("/etc/hosts"), inplace=True) as f:
-        for line in f:
-            if "127.0.1.1" in line:
-                print("127.0.1.1       " + hostname)
-            else:
-                sys.stdout.write(line)
+    replace_line("/etc/hosts", "127.0.1.1", "       " + hostname)
