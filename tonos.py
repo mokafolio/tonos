@@ -16,8 +16,8 @@ def replace_line(_path, _start, _change):
                 sys.stdout.write(line)
 
 def append_to_file(_path, _str):
-    with open("/etc/mopidy/mopidy.conf", "a") as f:
-        f.write("\n[mpd]\nhostname = ::\n\n[http]\nhostname = ::\n")
+    with open(_path, "a") as f:
+        f.write(_str)
 
 #install pip
 subprocess.call("sudo apt install python3-pip", shell=True)
