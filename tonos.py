@@ -27,9 +27,17 @@ subprocess.call("sudo apt install mopidy", shell=True)
 
 #install extensions
 subprocess.call("sudo apt install mopidy-mpd", shell=True)
+subprocess.call("sudo apt install snapserver", shell=True)
 subprocess.call("sudo apt install mopidy-soundcloud", shell=True)
+subprocess.call("sudo apt install mopidy-spotify", shell=True)
+subprocess.call("sudo apt install mopidy-youtube", shell=True)
 
-#adjust mopidy config
+#adjust mopidy config to allow access from local ips for both http and mpd
+with open("/etc/mopidy/mopidy.conf", "a") as f:
+    f.write("\n[mpd]\nhostname = ::\n\n[http]\nhostname = ::\n")
+
+#make mopidy run as a service
+subprocess.call("sudo dpkg-reconfigure mopidy", shell=True)
 
 #change hostname
 if hostname:
