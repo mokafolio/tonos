@@ -41,7 +41,7 @@ append_to_file("/etc/mopidy/mopidy.conf", "\n[mpd]\nhostname = ::\n\n[http]\nhos
 
 #enable soundcloud
 if soundcloud_key != None:
-    append_to_file("/etc/mopidy/mopidy.conf", "\n[soundcloud]\auth_token = " + soundcloud_key + "\n")
+    append_to_file("/etc/mopidy/mopidy.conf", "\n[soundcloud]\nauth_token = " + soundcloud_key + "\n")
 
 #make mopidy run as a service
 subprocess.call("sudo dpkg-reconfigure mopidy", shell=True)
