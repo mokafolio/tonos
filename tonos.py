@@ -29,6 +29,6 @@ if hostname:
     with fileinput.input(files=("/etc/hosts"), inplace=True) as f:
         for line in f:
             if "127.0.1.1" in line:
-                print("127.0.1.1 " + hostname)
+                print("127.0.1.1       " + hostname)
             else:
                 print(line)
